@@ -16,7 +16,6 @@ PrioritySort.prototype.createPriorityLists = function(){
 ////////////////////////////////////////////////////////////
 function PriorityList(list){
   this.list = list;
-  // this.showByPriority = true;
   this.initialCount = this.list.data("initial-items-count");
   this.listItems = this.list.find("li");
   this.prioritySorting = true;
@@ -27,11 +26,9 @@ function PriorityList(list){
 
 PriorityList.prototype.init = function(){
   this.setPriorityOfItems();
-  // this.show();
   this.createButton();
   this.header = $("<div></div>").css("padding", "20px");
   this.createButtonsInHeader();
-
   this.bindClickEvent();
 }
 
@@ -165,13 +162,9 @@ PriorityList.prototype.show = function(sortBy, sortingOrder){
 
   var sortedList;
   if(sortBy == "priority"){
-    // this.showPriority(sortingOrder, itemsToShow, $(items));
     sortedList = this.sortByPriority(sortingOrder, $(items));
-    // this.sortedDisplay(sortedList, items);
   } else{
-    // this.showAlphabetically(sortingOrder, itemsToShow, $(items));
     sortedList = this.sortByAlphabets(sortingOrder, $(items));
-    // this.sortedDisplay(sortedList, items);
   }
   this.sortedDisplay(sortedList, itemsToShow);
 }
@@ -190,40 +183,10 @@ PriorityList.prototype.sortedDisplay = function(sortedList, itemsToShow){
   this.hiddenList = [];
 }
 
-// PriorityList.prototype.showPriority = function(sortingOrder, itemsToShow, items){
-//   var _this = this;
-//   var sortedList = this.sortByPriority(sortingOrder, items);
-//   $(sortedList).show();
-//   var visibleList = sortedList.slice(0, itemsToShow);
-//   this.hiddenList.push(sortedList.slice(itemsToShow, sortedList.length));
-//   this.hiddenList.forEach(function(item, index){
-//     $(item).hide();
-//   })
-//   visibleList.forEach(function(item, index){
-//     _this.list.append($(item));
-//   })
-//   this.hiddenList = [];
-// }
-
-// PriorityList.prototype.showAlphabetically = function(sortingOrder, itemsToShow, items){
-//   var _this = this;
-//   var sortedList = this.sortByAlphabets(sortingOrder, items);
-//   $(sortedList).show();
-//   var visibleList = sortedList.slice(0, itemsToShow);
-//   this.hiddenList.push(sortedList.slice(itemsToShow, sortedList.length));
-//   this.hiddenList.forEach(function(item, index){
-//     $(item).hide();
-//   })
-//   visibleList.forEach(function(item, index){
-//     _this.list.append($(item));
-//   })
-//   this.hiddenList = [];
-// }
 ///////////////////////////////////////////////////////////
 $(document).ready(function(){
   domElements = {
-    //TODO
-    lists: $("ul").filter(".priority-sort"),
+    lists: $("ul.priority-sort"),
   };
 
   var prioritySort = new PrioritySort(domElements);
